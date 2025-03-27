@@ -5,9 +5,7 @@ on: [push]
 jobs:
   mlops-container:
     runs-on: ubuntu-latest
-    defaults:
-      runs:
-        working-directory: ./MLOps_basics
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v2
