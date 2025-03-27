@@ -1,0 +1,3 @@
+[2025-03-26 09:00:12,801][__main__][INFO] - Loading pre-trained model from: /Users/andrewlee/Desktop/dslearning/MLOps/MLOps_basics/models/best-checkpoint.ckpt
+[2025-03-26 09:00:16,069][__main__][INFO] - Converting the model into ONNX format
+[2025-03-26 09:00:16,729][__main__][INFO] - Model converted successfully. ONNX format model is at: /Users/andrewlee/Desktop/dslearning/MLOps/MLOps_basics/models/model.onnx

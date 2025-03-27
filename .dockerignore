@@ -1,0 +1,17 @@
+# Logs
+outputs/
+wandb/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Models (no need to include if we use S3)
+#models/
+
+# Need for training (not inference)
+model.py
+train.py
+train.log
+inference.py
+convert_model_to_onnx.py

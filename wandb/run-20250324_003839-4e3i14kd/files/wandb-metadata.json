@@ -1,0 +1,44 @@
+{
+  "os": "macOS-13.3.1-arm64-arm-64bit",
+  "python": "CPython 3.11.5",
+  "startedAt": "2025-03-24T04:38:39.127362Z",
+  "program": "/Users/andrewlee/Desktop/dslearning/MLOps/MLOps_basics/train.py",
+  "codePath": "Desktop/dslearning/MLOps/MLOps_basics/train.py",
+  "git": {
+    "remote": "https://github.com/leeanddrew/my-first-git-project.git",
+    "commit": "a5173e29f0d5b638f9c8f5b0386de2c6db088741"
+  },
+  "email": "andrewlee1@fas.harvard.edu",
+  "root": ".",
+  "host": "andrew-lee.local",
+  "executable": "/Users/andrewlee/anaconda3/bin/python",
+  "codePathLocal": "train.py",
+  "cpu_count": 8,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "245107195904",
+      "used": "225333579776"
+    },
+    "/System/Volumes/Data": {
+      "total": "245107195904",
+      "used": "225333579776"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "cpu": {
+    "count": 8,
+    "countLogical": 8
+  },
+  "apple": {
+    "name": "Apple M1",
+    "ecpuCores": 4,
+    "pcpuCores": 4,
+    "gpuCores": 7,
+    "memoryGb": 16,
+    "swapTotalBytes": "18253611008",
+    "ramTotalBytes": "17179869184"
+  }
+}
