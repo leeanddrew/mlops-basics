@@ -11,7 +11,7 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
 # install requirements
-RUN pip install "dvc[s3]==2.58.0"
+RUN pip install "dvc[s3]==2.8.1"
 RUN dvc --version
 RUN pip install -r requirements_inference.txt
 
