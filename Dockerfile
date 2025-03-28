@@ -12,8 +12,7 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
 
 # install requirements
 RUN pip install --upgrade pip setuptools wheel
-RUN pip install dvc dvc-s3
-#RUN pip install "dvc[s3]==3.59.1"
+RUN pip install "dvc[s3]==3.59.1"
 RUN dvc --version
 RUN pip install -r requirements_inference.txt
 
