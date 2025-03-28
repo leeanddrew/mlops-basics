@@ -8,16 +8,18 @@ ARG AWS_SECRET_ACCESS_KEY
 ARG AWS_DEFAULT_REGION
 
 # aws credentials configuration
-ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
-    AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+    AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
 # install requirements
 RUN pip install "dvc[s3]==2.8.1"
-RUN dvc --version
 RUN pip install -r requirements_inference.txt
 
 # initialize dvc
 RUN dvc init --no-scm -f
+
+RUN export AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID
+RUN export AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
 
 # configuring remote server in dvc
 RUN dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
