@@ -13,7 +13,7 @@ class ColaModel(pl.LightningModule):
         self.save_hyperparameters()
         self.validation_step_outputs = {"labels":[],"logits":[]}
         
-        self.bert = AutoModelForSequenceClassification.from_pretrained(model_name,num_labels=2)
+        self.bert = AutoModelForSequenceClassification.from_pretrained(model_name,num_labels=2,cache_dir='/hf_cache')
         self.num_classes = 2
 
         #metrics to log
