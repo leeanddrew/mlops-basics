@@ -8,4 +8,4 @@ hydra_colorlog
 onnxruntime
 fastapi
 uvicorn
-dvc==3.59.1
+#dvc==3.59.1

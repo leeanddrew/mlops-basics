@@ -12,6 +12,7 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
 
 # install requirements
 RUN pip install "dvc[s3]"
+RUN dvc --version
 RUN pip install -r requirements_inference.txt
 
 # initialize dvc
