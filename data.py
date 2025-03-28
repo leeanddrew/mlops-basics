@@ -15,7 +15,7 @@ class DataModule(pl.LightningDataModule):
         
         self.batch_size = batch_size
         self.max_length = max_length
-        self.tokenizer = AutoTokenizer.from_pretrained("./hf_cache",local_files_only=True)
+        self.tokenizer = AutoTokenizer.from_pretrained("./hf_cache/models--google--bert_uncased_L-2_H-128_A-2/snapshots/30b0a37ccaaa32f332884b96992754e246e48c5f/",local_files_only=True)
     
     def prepare_data(self):
         cola_dataset = load_dataset("glue","cola")
