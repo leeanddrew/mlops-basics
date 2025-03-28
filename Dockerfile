@@ -1,6 +1,13 @@
 FROM huggingface/transformers-pytorch-cpu:latest
 
 COPY ./ /app
+
+# Copy the locally cached Hugging Face tokenizer/model
+COPY ./hf_cache /root/.cache/huggingface
+
+# Set Hugging Face cache environment variable
+ENV TRANSFORMERS_CACHE=/root/.cache/huggingface
+
 WORKDIR /app
 
 ARG AWS_ACCESS_KEY_ID
@@ -26,8 +33,6 @@ RUN export AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
 RUN dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
 
 RUN cat .dvc/config
-
-RUN echo "Key: $AWS_ACCESS_KEY_ID" && echo "Secret: $AWS_SECRET_ACCESS_KEY" && env
 
 # pulling the trained model
 RUN dvc pull models/model.onnx.dvc
