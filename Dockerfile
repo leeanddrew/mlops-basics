@@ -8,8 +8,9 @@ ARG AWS_SECRET_ACCESS_KEY
 ARG AWS_DEFAULT_REGION
 
 # aws credentials configuration
-ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-    AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+ENV AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
 
 # install requirements
 RUN pip install "dvc[s3]==2.8.1"
@@ -25,6 +26,8 @@ RUN export AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
 RUN dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
 
 RUN cat .dvc/config
+
+RUN echo "Key: $AWS_ACCESS_KEY_ID" && echo "Secret: $AWS_SECRET_ACCESS_KEY" && env
 
 # pulling the trained model
 RUN dvc pull models/model.onnx.dvc
