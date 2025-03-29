@@ -1,4 +1,4 @@
-FROM huggingface/transformers-pytorch-cpu:latest
+FROM public.ecr.aws/lambda/python:3.9
 
 # Cache HF models and set env
 COPY ./hf_cache /root/.cache/huggingface
