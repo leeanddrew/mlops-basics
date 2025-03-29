@@ -11,7 +11,8 @@ ENV TRANSFORMERS_CACHE=$MODEL_DIR \
 ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
-RUN yum install git -y && yum -y install gcc-c++
+RUN apt-get update && apt-get install -y git build-essential
+
 COPY requirements_inference.txt requirements_inference.txt
 RUN pip install -r requirements_inference.txt --no-cache-dir
 COPY ./ ./
