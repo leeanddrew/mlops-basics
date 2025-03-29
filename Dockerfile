@@ -13,7 +13,7 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
 
 #RUN apt-get update && apt-get install -y git build-essential
 
-COPY requirements_inference.txt requirements_inference.txt
+COPY ./requirements_inference.txt ./
 RUN pip install -r requirements_inference.txt --no-cache-dir
 COPY ./ ./
 ENV PYTHONPATH "${PYTHONPATH}:./"
