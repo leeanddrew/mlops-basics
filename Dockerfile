@@ -19,7 +19,7 @@ ENV TRANSFORMERS_CACHE=$MODEL_DIR
 ENV TRANSFORMERS_VERBOSITY=error
 
 # System requirements (Ubuntu-based image)
-RUN apt-get update && apt-get install -y git build-essential
+RUN yum install -y git gcc-c++ make
 
 # Copy source
 COPY ./ ./
