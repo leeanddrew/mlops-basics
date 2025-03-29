@@ -16,7 +16,11 @@ RUN mkdir $MODEL_DIR
 # aws credentials configuration
 ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-ENV AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+ARG MODEL_DIR=./models
+RUN mkdir $MODEL_DIR
+
+ENV TRANSFORMERS_CACHE=$MODEL_DIR \
+    TRANSFORMERS_VERBOSITY=error
 
 # install requirements
 #RUN yum install git -y && yum -y install gcc-c++
@@ -24,6 +28,8 @@ COPY ./ ./
 RUN pip install "dvc[s3]==2.8.1"
 RUN pip install -r requirements_inference.txt
 ENV PYTHONPATH "${PYTHONPATH}:./"
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 COPY lambda_handler.py ${LAMBDA_TASK_ROOT}
 
 # initialize dvc
@@ -37,9 +43,6 @@ RUN dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
 
 # pulling the trained model
 RUN dvc pull models/model.onnx.dvc
-
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
 
 # running the application
 RUN ls
