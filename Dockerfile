@@ -26,7 +26,9 @@ COPY . /var/task/
 
 # Install dependencies
 RUN pip install --force-reinstall "fsspec==2021.10.0" "s3fs==2021.10.0" "dvc[s3]==2.8.1"
-RUN pip install --no-deps -r requirements_inference.txt
+RUN pip install --upgrade pip \
+    && pip install --index-url https://download.pytorch.org/whl/cpu \
+       torch==2.0.1+cpu torchvision==0.15.2+cpu 
 ENV PYTHONPATH="${PYTHONPATH}:./"
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8

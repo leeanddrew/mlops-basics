@@ -10,5 +10,5 @@ fastapi
 uvicorn
 numpy
 scipy
-torch
+torch==2.0.1+cpu
 #dvc
