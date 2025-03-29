@@ -1,4 +1,4 @@
-FROM amazon/aws-lambda-python
+FROM amazon/aws-amazon/aws-sam-cli-build-image-python3.9
 
 # Cache HF models and set env
 COPY ./hf_cache /root/.cache/huggingface
