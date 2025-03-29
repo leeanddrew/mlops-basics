@@ -1,5 +1,5 @@
 pytorch-lightning==1.2.10
-datasets==1.6.2
+datasets
 transformers==4.5.1
 scikit-learn==0.24.2
 hydra-core
@@ -9,5 +9,3 @@ onnxruntime
 fastapi
 uvicorn
 dvc
-tokenizers==0.10.2
-transformers==4.5.1
