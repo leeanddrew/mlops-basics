@@ -32,9 +32,9 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 # Initialize and pull DVC-tracked model
-RUN cd /var/task && dvc init --no-scm -f
-RUN cd /var/task && dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
-RUN cd /var/task && dvc pull models/model.onnx.dvc
+RUN dvc init --no-scm -f
+RUN dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
+RUN dvc pull models/model.onnx.dvc
 
 # Final step for Lambda
 RUN chmod -R 0755 $MODEL_DIR
