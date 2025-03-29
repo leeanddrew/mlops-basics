@@ -20,9 +20,9 @@ ENV AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
 
 # install requirements
 #RUN yum install git -y && yum -y install gcc-c++
+COPY ./ ./
 RUN pip install "dvc[s3]==2.8.1"
 RUN pip install -r requirements_inference.txt
-COPY ./ ./
 ENV PYTHONPATH "${PYTHONPATH}:./"
 
 # initialize dvc
