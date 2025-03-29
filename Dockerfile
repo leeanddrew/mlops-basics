@@ -1,4 +1,4 @@
-FROM public.ecr.aws/lambda/python:3.9
+FROM amazon/aws-lambda-python
 
 # Cache HF models and set env
 COPY ./hf_cache /root/.cache/huggingface
@@ -19,7 +19,7 @@ ENV TRANSFORMERS_CACHE=$MODEL_DIR
 ENV TRANSFORMERS_VERBOSITY=error
 
 # System requirements (Ubuntu-based image)
-RUN yum install -y git gcc-c++ make
+RUN yum install git -y && yum -y install gcc-c++
 
 # Copy source
 COPY ./ ./
@@ -32,9 +32,10 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 # Setup DVC
-RUN dvc init --no-scm -f
+RUN dvc init --no-scm
 RUN dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
 RUN dvc pull models/model.onnx.dvc
 
 # Final step for Lambda
+RUN chmod -R 0755 $MODEL_DIR
 CMD [ "lambda_handler.lambda_handler" ]
