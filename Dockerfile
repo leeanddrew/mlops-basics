@@ -1,15 +1,11 @@
 #FROM huggingface/transformers-pytorch-cpu:latest
 FROM huggingface/transformers-pytorch-cpu:latest
 
-COPY ./ /app
-
 # Copy the locally cached Hugging Face tokenizer/model
 COPY ./hf_cache /root/.cache/huggingface
 
 # Set Hugging Face cache environment variable
 ENV TRANSFORMERS_CACHE=/root/.cache/huggingface
-
-WORKDIR /app
 
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
