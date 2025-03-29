@@ -11,5 +11,5 @@ uvicorn
 numpy
 scipy
 torch
-os
+json
 #dvc
