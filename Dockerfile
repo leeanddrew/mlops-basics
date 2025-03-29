@@ -25,6 +25,7 @@ RUN yum install -y git gcc-c++ make && yum clean all
 COPY . /var/task/
 
 # Install dependencies
+RUN pip install "fsspec<2022.5.0"
 RUN pip install "dvc[s3]==2.8.1"
 RUN pip install -r requirements_inference.txt
 ENV PYTHONPATH="${PYTHONPATH}:./"
