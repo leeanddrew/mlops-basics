@@ -19,10 +19,10 @@ ENV TRANSFORMERS_CACHE=$MODEL_DIR
 ENV TRANSFORMERS_VERBOSITY=error
 
 # System requirements (Ubuntu-based image)
-RUN microdnf install git gcc-c++ -y
+RUN yum install -y git gcc-c++ make && yum clean all
 
 # Copy source
-COPY ./ ./
+COPY . /var/task/
 
 # Install dependencies
 RUN pip install "dvc[s3]==2.8.1"
@@ -31,10 +31,10 @@ ENV PYTHONPATH="${PYTHONPATH}:./"
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-# Setup DVC
-RUN dvc init --no-scm
-RUN dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
-RUN dvc pull models/model.onnx.dvc
+# Initialize and pull DVC-tracked model
+RUN cd /var/task && dvc init --no-scm -f
+RUN cd /var/task && dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
+RUN cd /var/task && dvc pull models/model.onnx.dvc
 
 # Final step for Lambda
 RUN chmod -R 0755 $MODEL_DIR
