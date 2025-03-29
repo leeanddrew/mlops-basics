@@ -42,7 +42,7 @@ ENV LANG=C.UTF-8
 
 # running the application
 RUN ls
-RUN python lambda_handler.py
+#RUN python lambda_handler.py
 RUN chmod -R 0755 $MODEL_DIR
 CMD [ "lambda_handler.lambda_handler"]
 #EXPOSE 8000
