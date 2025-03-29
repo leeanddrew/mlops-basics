@@ -36,11 +36,5 @@ RUN dvc init --no-scm -f
 RUN dvc remote add -d model-store s3://models-dvc-mlops-basics/trained_models/
 RUN dvc pull models/model.onnx.dvc
 
-# Lambda handler setup
-COPY lambda_handler.py /var/task/
-
-# Optional: debug
-RUN ls -l /var/task/
-
 # Final step for Lambda
 CMD [ "lambda_handler.lambda_handler" ]
