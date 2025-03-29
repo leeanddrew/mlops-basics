@@ -19,7 +19,7 @@ ENV TRANSFORMERS_CACHE=$MODEL_DIR
 ENV TRANSFORMERS_VERBOSITY=error
 
 # System requirements (Ubuntu-based image)
-RUN yum install git -y && yum -y install gcc-c++
+RUN microdnf install git gcc-c++ -y
 
 # Copy source
 COPY ./ ./
