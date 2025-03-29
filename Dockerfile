@@ -24,6 +24,7 @@ COPY ./ ./
 RUN pip install "dvc[s3]==2.8.1"
 RUN pip install -r requirements_inference.txt
 ENV PYTHONPATH "${PYTHONPATH}:./"
+COPY lambda_handler.py ${LAMBDA_TASK_ROOT}
 
 # initialize dvc
 RUN dvc init --no-scm -f
