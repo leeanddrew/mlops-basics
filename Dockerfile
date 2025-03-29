@@ -1,5 +1,5 @@
 #FROM huggingface/transformers-pytorch-cpu:latest
-FROM amazon/aws-lambda-python
+FROM huggingface/transformers-pytorch-cpu:latest
 
 COPY ./ /app
 
