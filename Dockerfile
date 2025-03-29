@@ -25,8 +25,8 @@ RUN yum install -y git gcc-c++ make && yum clean all
 COPY . /var/task/
 
 # Install dependencies
-RUN pip install "fsspec==2021.10.0" "s3fs==2021.10.0" "dvc[s3]==2.8.1"
-RUN pip install -r requirements_inference.txt
+RUN pip install --force-reinstall "fsspec==2021.10.0" "s3fs==2021.10.0" "dvc[s3]==2.8.1"
+RUN pip install --no-deps -r requirements_inference.txt
 ENV PYTHONPATH="${PYTHONPATH}:./"
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
